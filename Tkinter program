@@ -1,0 +1,93 @@
+from tkinter import *
+from tkinter import ttk 
+ 
+#colors
+co0 = "#ffffff"   #braca/white
+co1 = "#000000"   #preta/black
+co2 = "#800080"   #roxo/purple
+
+
+#layout
+janela = Tk()
+janela.title("Calculadora de Velocidade")
+janela.geometry("300x230")
+janela.configure(bg="white")
+
+# dividindo a JANELA em duas partes
+
+frame_cima = Frame(janela, width = 1920, height= 30, bg=co2, pady= 0, padx = 0, relief = "flat")
+frame_cima.grid(row=0, column=0, sticky=NSEW)
+
+frame_baixo = Frame(janela, width = 295, height= 180, bg= co0, pady= 0, padx = 0, relief = "flat")
+frame_baixo.grid(row=1, column=0, sticky=NSEW)
+
+# configurando FRAME_CIMA
+
+app_nome = Label(frame_cima, text="Calculadora de Velocidade", width=23, height= 1, padx=50, relief="flat", anchor="center"
+, font = ("Calibri"), bg= co2, fg = co0)
+
+app_nome.place(x=0, y=0)
+
+#####################################################################################
+
+# configurando DISTÂNCIA
+
+l_Distancia = Label(frame_baixo, text="Insira uma distância",height= 1, padx=5, relief="flat", anchor="center"
+, font = ("Calibri 11 bold"), bg= co0, fg = co1)
+l_Distancia.grid(row=0, column=0, sticky=NSEW, pady=10, padx=3)
+
+
+e_Distancia = Entry(frame_baixo, width=5, borderwidth= 3)
+e_Distancia.grid(row=0, column=1, sticky=NSEW, pady=10, padx=3)
+
+
+# Configurando TEMPO
+
+l_Tempo = Label(frame_baixo, text="Insira um tempo",height= 1, padx=10, relief="flat", anchor="center"
+, font = ("Calibri 11 bold"), bg= co0, fg = co1)
+l_Tempo.grid(row=1, column=0, sticky=NSEW, pady=10, padx=3)
+
+e_Tempo = Entry(frame_baixo, width =5, borderwidth= 3)
+e_Tempo.grid(row=1, column=1, sticky=NSEW, pady=10, padx=3)
+
+
+
+# Configurando Resultado
+
+l_Resultado = Label(frame_baixo, text="",width=4,height= 1, padx=6, pady=12, relief="flat", anchor="center"
+, font = ("Calibri 24 bold"), bg= co2, fg = co0)
+l_Resultado.place(x=205, y=10)
+
+l_Resultado_Texto = Label(frame_baixo, text="",height= 1, padx=5, relief="flat", anchor="center"
+, font = ("Calibri 11 bold"), bg= co0, fg = co1)
+l_Resultado_Texto.place(x=65, y=100)
+
+
+
+###### Créditos ######
+l_credito = Label(frame_baixo, text="Made by: Bruno Freire",height= 1, padx=3, relief="flat", anchor="center"
+, font = ("Calibri 8 bold"), bg= co2, fg = co0)
+l_credito.place(x=90, y=178)
+
+
+
+########Função#######
+
+
+def myclick():
+    distancia = float(e_Distancia.get())
+    tempo = float(e_Tempo.get())
+    velocidade = distancia / tempo
+    
+    resultadoum = velocidade
+    l_Resultado["text"] = "{:.{}f}" .format(resultadoum,2) ###### formatar para string 
+    l_Resultado_Texto["text"]= "a velocidade é", "{:.{}f}".format(resultadoum,2), "m/s."
+   
+
+# Configurando Botão de Calcular
+
+b_Calcular = Button(frame_baixo, command = myclick, text="Calcular",width=37,height= 1,overrelief=SOLID, relief="raised", anchor="center"
+, font = ("Calibri 10 bold"), bg= co2, fg = co0)
+b_Calcular.grid(row=4, column=0, sticky=NSEW, pady=60, padx=15, columnspan=70) 
+
+janela.mainloop()
