@@ -1,3 +1,7 @@
+#THIS IS A PRETTY BASIC PROJECT, IT'S A SPEED CALCULATOR, YOU PUT THE DISTANCE AND THE TIME, THEN IT'LL CALCULATE THE SPEED.
+
+
+
 from tkinter import *
 from tkinter import ttk 
  
